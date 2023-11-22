@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  img {
+    height: 60px;
+    width: 60px;
+  }
+}

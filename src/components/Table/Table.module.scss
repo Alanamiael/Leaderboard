@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  @include border;
+  background-color: $light-gray;
+  margin-top: 15px;
+  padding: 20px;
+}

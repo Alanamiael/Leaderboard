@@ -1,0 +1,12 @@
+@import './variables';
+.container {
+  width: 80%;
+  margin: 40px auto;
+}
+h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+span {
+  color: $orange;
+}

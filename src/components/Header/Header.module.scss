@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.container {
+  @include flex($align: start, $justify: space-between);
+  @include border;
+  position: relative;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: $blue;
+  color: $white;
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 9px;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 6px;
+  }
+  .wrapper {
+    @include flex($justify: space-between);
+  }
+  .headerImg {
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+  }
+}
