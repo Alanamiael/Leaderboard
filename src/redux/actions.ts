@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { UserProps } from 'components/services/interfaces';
+import { UserProps } from 'services/interfaces';
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
+  // eslint-disable-next-line consistent-return
   async (): Promise<UserProps[] | undefined> => {
     try {
       const url = `https://655cc4e325b76d9884fdebd4.mockapi.io/LeaderboardData`;

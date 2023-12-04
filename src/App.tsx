@@ -10,7 +10,6 @@ import { fetchUsers } from './redux/actions';
 import cl from './styles/App.module.scss';
 
 function App() {
-  const users = useSelector((store: RootState) => store.leaderboard.leaders);
   const isLoading = useSelector(
     (store: RootState) => store.leaderboard.loading,
   );
@@ -20,12 +19,11 @@ function App() {
     dispatch(fetchUsers());
   }, []);
 
-  console.log(users);
   return (
     <div className={cl.container}>
       <Logo />
-      <Header users={users} />
-      {isLoading ? <Loader /> : <Table users={users} />}
+      <Header />
+      {isLoading ? <Loader /> : <Table />}
     </div>
   );
 }

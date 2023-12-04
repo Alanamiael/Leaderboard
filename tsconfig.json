@@ -25,7 +25,8 @@
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
       "services/*": ["services/*"],
-      "styles/*": ["styles/*"]
+      "styles/*": ["styles/*"],
+      "helpers/*": ["helpers/*"]
     }
   },
   "include": [".eslintrc.cjs", "src"],

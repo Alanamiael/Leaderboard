@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import editButton from 'assets/edit.svg';
-import { twelveRange } from 'components/helpers/helpers';
-import { UserProps } from '../services/interfaces';
+import { place } from 'helpers/helpers';
 import ModalEdit from '../ModalEdit';
+import { UserProps } from '../../services/interfaces';
 import cl from './UserInfo.module.scss';
 
 interface UserInfoProps {
@@ -16,25 +16,13 @@ const UserInfo: FC<UserInfoProps> = ({ user, index }) => {
     setModal((prev) => !prev);
   };
 
-  const place = () => {
-    switch (index) {
-      case 0:
-        return `${index + 1}st`;
-      case 1:
-        return `${index + 1}nd`;
-      case 2:
-        return `${index + 1}rd`;
-      default:
-        return `${index + 1}th`;
-    }
-  };
   return (
     <>
       <div className={cl.container}>
         <div className={cl.info}>
-          <p className={cl.place}>{place()}</p>
+          <p className={cl.place}>{place(index)}</p>
           <img src={user?.avatar} alt="avatar" />
-          <p className={cl.score}>{twelveRange(user?.score as number)}</p>
+          <p className={cl.score}>{user?.score}</p>
           <p className={cl.name}>{user?.name}</p>
         </div>
         <div className={cl.position}>
@@ -48,11 +36,7 @@ const UserInfo: FC<UserInfoProps> = ({ user, index }) => {
           </div>
         </div>
       </div>
-      <ModalEdit
-        modal={modal}
-        setModal={actionModalFunction}
-        text="Edit user Score"
-      />
+      <ModalEdit modal={modal} setModal={actionModalFunction} user={user} />
     </>
   );
 };

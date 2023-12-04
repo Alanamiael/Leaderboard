@@ -19,6 +19,9 @@
     @include border;
     padding: 6px 24px;
     color: $white;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .next {
     background-color: $orange;

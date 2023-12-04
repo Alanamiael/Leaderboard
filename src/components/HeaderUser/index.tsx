@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { UserProps } from 'components/services/interfaces';
-import { twelveRange } from 'components/helpers/helpers';
+import { UserProps } from 'services/interfaces';
+
 import cl from './HeaderUser.module.scss';
 
 interface HeaderUserProps {
@@ -12,7 +12,7 @@ const HeaderUser: FC<HeaderUserProps> = ({ user }) => {
     <div className={cl.container}>
       <img src={user?.avatar} alt="" />
       <p>
-        {user?.name} - {twelveRange(user?.score as number)}
+        {user?.name} - {user?.score}
       </p>
     </div>
   );

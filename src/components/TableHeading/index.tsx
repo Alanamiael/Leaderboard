@@ -1,12 +1,12 @@
+import { useState } from 'react';
 import LeftArrow from 'assets/arrows/leftArrow.svg';
 import RightArrow from 'assets/arrows/rightArrow.svg';
-import ModalEdit from 'components/ModalEdit';
-import { useState } from 'react';
+import ModalAdd from 'components/ModalAdd';
 import cl from './TableHeading.module.scss';
 
 const TableHeading = () => {
   const [modal, setModal] = useState(false);
-  const actionModalFunction = () => {
+  const toggleModal = () => {
     setModal((prev) => !prev);
   };
   return (
@@ -22,14 +22,10 @@ const TableHeading = () => {
         <button type="button" className={cl.next}>
           Next Day
         </button>
-        <button type="button" className={cl.new} onClick={actionModalFunction}>
+        <button type="button" className={cl.new} onClick={toggleModal}>
           Add New User
         </button>
-        <ModalEdit
-          modal={modal}
-          setModal={actionModalFunction}
-          text="Add new user"
-        />
+        <ModalAdd modal={modal} setModal={toggleModal} />
       </div>
     </div>
   );

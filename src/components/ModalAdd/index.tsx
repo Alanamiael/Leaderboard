@@ -6,40 +6,47 @@ import {
   SetStateAction,
   useState,
 } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import closeIcon from 'assets/modal/close.svg';
 import plant from 'assets/modal/plant.svg';
-import { UserProps } from 'services/interfaces';
-import { updateUser } from '../../redux/slice';
+import { avatars } from 'helpers/helpers';
+import { createUser } from '../../redux/slice';
 import { useAppDispatch } from '../../redux/hooks';
-import cl from './ModalEdit.module.scss';
+import cl from './ModalAdd.module.scss';
 
 interface ModalEditProps {
   modal: boolean;
   setModal: Dispatch<SetStateAction<boolean>>;
-  user: UserProps | undefined;
 }
-const ModalEdit: FC<ModalEditProps> = ({ modal, setModal, user }) => {
-  const dispatch = useAppDispatch();
+const ModalEdit: FC<ModalEditProps> = ({ modal, setModal }) => {
   const rootClasses = [cl.modal];
-  // if (!modal) {
-  //   return null;
-  // }
+  const dispatch = useAppDispatch();
 
   if (modal) {
     rootClasses.push(cl.active);
   }
 
-  const [userName, setUserName] = useState(user?.name);
-  const [userScore, setUserScore] = useState(user?.score);
+  const [userName, setUserName] = useState('');
+  const [userScore, setUserScore] = useState(0);
+  const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(updateUser({ ...user, name: userName, score: userScore }));
+    dispatch(
+      createUser({
+        name: userName,
+        score: userScore,
+        avatar: randomAvatar.src,
+        id: uuidv4(),
+      }),
+    );
+    setUserName('');
+    setUserScore(0);
     setModal(false);
   };
-  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleAddName = (event: ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
   };
-  const handleChangeScore = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleAddScore = (event: ChangeEvent<HTMLInputElement>) => {
     setUserScore(+event.target.value);
   };
   return (
@@ -62,7 +69,7 @@ const ModalEdit: FC<ModalEditProps> = ({ modal, setModal, user }) => {
             <img src={closeIcon} alt="close" />
           </div>
           <div className={cl.positionBlock}>
-            <h3>Edit User</h3>
+            <h3>Add New User</h3>
             <form onSubmit={handleSubmit}>
               <div>
                 <input
@@ -70,7 +77,7 @@ const ModalEdit: FC<ModalEditProps> = ({ modal, setModal, user }) => {
                   id="title"
                   placeholder="Name"
                   value={userName}
-                  onChange={handleChangeName}
+                  onChange={handleAddName}
                 />
 
                 <div className={cl.scoreInput}>
@@ -81,7 +88,7 @@ const ModalEdit: FC<ModalEditProps> = ({ modal, setModal, user }) => {
                     max={100}
                     min={0}
                     value={userScore}
-                    onChange={handleChangeScore}
+                    onChange={handleAddScore}
                   />
                 </div>
                 <button type="submit">Save</button>

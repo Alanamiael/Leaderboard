@@ -1,15 +1,15 @@
-import { FC } from 'react';
-import { UserProps } from '../services/interfaces';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
+import { UserProps } from '../../services/interfaces';
 import UserInfo from '../UserInfo';
 
-interface TableContentProps {
-  users: UserProps[] | undefined;
-}
-const TableContent: FC<TableContentProps> = ({ users }) => {
+const TableContent = () => {
+  const users = useSelector((store: RootState) => store.leaderboard.leaders);
+  console.log('users', users);
   return (
     <div>
       {users
-        ?.slice(0, 8)
+        ?.slice()
         .map((user: UserProps, index) => (
           <UserInfo key={user.id} user={user} index={index} />
         ))}

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { UserProps } from 'components/services/interfaces';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { UserProps } from 'services/interfaces';
 import { fetchUsers } from './actions';
 
 export interface UserState {
@@ -13,30 +13,42 @@ const initialState: UserState = {
   leaders: [],
   loading: false,
 };
+// type newLeadersProps =[Symbol.iterator]() | undefined;
 
 const leaderboardSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    // nameEdit(state, action) {
-    //   const { id, name } = action.payload;
-    //   const user = state.find((user: UserProps) => user.id === id);
-    //   if (user) {
-    //     user.name = name;
-    //   }
-    // },
+    updateUser(state, action) {
+      state.leaders = state.leaders
+        ?.map((user) => {
+          return user.id === action.payload.id ? action.payload : user;
+        })
+        .sort((a: UserProps, b: UserProps) => {
+          return b.score - a.score;
+        });
+    },
+    createUser(state, action: PayloadAction<UserProps>) {
+      if (state.leaders) {
+        const newLeaders = [...state.leaders, action.payload].sort(
+          (a, b) => b.score - a.score,
+        );
+        console.log(newLeaders, 'sortedLeaders');
+        state.leaders = newLeaders;
+      }
+    },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchUsers.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(fetchUsers.fulfilled, (state, { payload }) => {
       state.leaders = payload;
       state.loading = false;
     });
-    builder.addCase(fetchUsers.pending, (state) => {
-      state.loading = true;
-    });
   },
 });
 
-// export const {} = leaderboardSlice.actions;
+export const { updateUser, createUser } = leaderboardSlice.actions;
 
 export default leaderboardSlice.reducer;

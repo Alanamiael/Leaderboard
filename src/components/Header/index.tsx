@@ -1,14 +1,12 @@
-import HeaderUser from 'components/HeaderUser';
+import { useSelector } from 'react-redux';
 import headerImg from 'assets/heading.svg';
-import { UserProps } from 'components/services/interfaces';
-import { FC } from 'react';
+import HeaderUser from 'components/HeaderUser';
+import { UserProps } from 'services/interfaces';
+import { RootState } from 'redux/store';
 import cl from './Header.module.scss';
 
-interface HeaderProps {
-  users: UserProps[] | undefined;
-}
-
-const Header: FC<HeaderProps> = ({ users }) => {
+const Header = () => {
+  const users = useSelector((store: RootState) => store.leaderboard.leaders);
   return (
     <div className={cl.container}>
       <div className={cl.headerContent}>
