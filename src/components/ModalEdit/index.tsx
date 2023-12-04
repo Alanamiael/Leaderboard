@@ -1,13 +1,14 @@
 import { Dispatch, FC, SetStateAction } from 'react';
-import closeIcon from '../../assets/modal/close.svg';
-import plant from '../../assets/modal/plant.svg';
-import cl from './Modal.module.scss';
+import closeIcon from 'assets/modal/close.svg';
+import plant from 'assets/modal/plant.svg';
+import cl from './ModalEdit.module.scss';
 
-interface ModalProps {
+interface ModalEditProps {
   modal: boolean;
   setModal: Dispatch<SetStateAction<boolean>>;
+  text: string;
 }
-const Modal: FC<ModalProps> = ({ modal, setModal }) => {
+const ModalEdit: FC<ModalEditProps> = ({ modal, setModal, text }) => {
   const rootClasses = [cl.modal];
   // if (!modal) {
   //   return null;
@@ -36,7 +37,7 @@ const Modal: FC<ModalProps> = ({ modal, setModal }) => {
             <img src={closeIcon} alt="close" />
           </div>
           <div className={cl.positionBlock}>
-            <h3>Edit user score</h3>
+            <h3>{text}</h3>
             <form>
               <div>
                 <input type="text" id="title" placeholder="Name" />
@@ -61,4 +62,4 @@ const Modal: FC<ModalProps> = ({ modal, setModal }) => {
   );
 };
 
-export default Modal;
+export default ModalEdit;

@@ -1,8 +1,14 @@
-import LeftArrow from '../../assets/arrows/leftArrow.svg';
-import RightArrow from '../../assets/arrows/rightArrow.svg';
+import LeftArrow from 'assets/arrows/leftArrow.svg';
+import RightArrow from 'assets/arrows/rightArrow.svg';
+import ModalEdit from 'components/ModalEdit';
+import { useState } from 'react';
 import cl from './TableHeading.module.scss';
 
 const TableHeading = () => {
+  const [modal, setModal] = useState(false);
+  const actionModalFunction = () => {
+    setModal((prev) => !prev);
+  };
   return (
     <div className={cl.container}>
       <p>Leaders table for this period</p>
@@ -16,9 +22,14 @@ const TableHeading = () => {
         <button type="button" className={cl.next}>
           Next Day
         </button>
-        <button type="button" className={cl.new}>
+        <button type="button" className={cl.new} onClick={actionModalFunction}>
           Add New User
-        </button>{' '}
+        </button>
+        <ModalEdit
+          modal={modal}
+          setModal={actionModalFunction}
+          text="Add new user"
+        />
       </div>
     </div>
   );

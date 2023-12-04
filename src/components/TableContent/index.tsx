@@ -1,16 +1,18 @@
+import { FC } from 'react';
+import { UserProps } from '../services/interfaces';
 import UserInfo from '../UserInfo';
 
-const TableContent = () => {
+interface TableContentProps {
+  users: UserProps[] | undefined;
+}
+const TableContent: FC<TableContentProps> = ({ users }) => {
   return (
     <div>
-      <UserInfo />
-      <UserInfo />
-      <UserInfo />
-      <UserInfo />
-      <UserInfo />
-      <UserInfo />
-      <UserInfo />
-      <UserInfo />
+      {users
+        ?.slice(0, 8)
+        .map((user: UserProps, index) => (
+          <UserInfo key={user.id} user={user} index={index} />
+        ))}
     </div>
   );
 };

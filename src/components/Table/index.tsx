@@ -1,12 +1,18 @@
+import { FC } from 'react';
 import TableContent from '../TableContent';
 import TableHeading from '../TableHeading';
+import { UserProps } from '../services/interfaces';
 import cl from './Table.module.scss';
 
-const Table = () => {
+interface TableProps {
+  users: UserProps[] | undefined;
+}
+
+const Table: FC<TableProps> = ({ users }) => {
   return (
     <div className={cl.container}>
       <TableHeading />
-      <TableContent />
+      <TableContent users={users} />
     </div>
   );
 };

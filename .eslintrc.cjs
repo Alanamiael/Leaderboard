@@ -36,5 +36,7 @@ module.exports = {
     'no-console': 0,
     'import/prefer-default-export': 0,
     'react-hooks/exhaustive-deps': 0,
+    'no-param-reassign': 0,
   },
+  ignorePatterns: ['.eslintrc.cjs', 'vite.config.ts'],
 };
