@@ -21,12 +21,12 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src",
     "paths": {
-      //  "@assets/*": ["assets/*"],
-      "assets/*": ["assets/*"],
-      "components/*": ["components/*"],
-      "services/*": ["services/*"],
-      "styles/*": ["styles/*"],
-      "helpers/*": ["helpers/*"]
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@ts/*": ["ts/*"],
+      "@styles/*": ["styles/*"],
+      "@helpers/*": ["helpers/*"],
+      "@redux/*": ["redux/*"]
     }
   },
   "include": [".eslintrc.cjs", "src"],

@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
-import { RootState } from 'redux/store';
-import { UserProps } from '../../services/interfaces';
+import { UserProps } from '@ts/interfaces';
+import { useAppSelector } from '@redux/hooks';
 import UserInfo from '../UserInfo';
 
 const TableContent = () => {
-  const users = useSelector((store: RootState) => store.leaderboard.leaders);
+  const users = useAppSelector((store) => store.leaderboard.leaders);
   console.log('users', users);
   return (
     <div>

@@ -1,12 +1,11 @@
-import { useSelector } from 'react-redux';
-import headerImg from 'assets/heading.svg';
-import HeaderUser from 'components/HeaderUser';
-import { UserProps } from 'services/interfaces';
-import { RootState } from 'redux/store';
+import headerImg from '@assets/heading.svg';
+import HeaderUser from '@components/HeaderUser';
+import { useAppSelector } from '@redux/hooks';
+import { UserProps } from '@ts/interfaces';
 import cl from './Header.module.scss';
 
 const Header = () => {
-  const users = useSelector((store: RootState) => store.leaderboard.leaders);
+  const users = useAppSelector((store) => store.leaderboard.leaders);
   return (
     <div className={cl.container}>
       <div className={cl.headerContent}>

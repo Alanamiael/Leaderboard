@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import LeftArrow from 'assets/arrows/leftArrow.svg';
-import RightArrow from 'assets/arrows/rightArrow.svg';
-import ModalAdd from 'components/ModalAdd';
+import LeftArrow from '@assets/arrows/leftArrow.svg';
+import RightArrow from '@assets/arrows/rightArrow.svg';
+import ModalAdd from '@components/ModalAdd';
 import cl from './TableHeading.module.scss';
 
 const TableHeading = () => {

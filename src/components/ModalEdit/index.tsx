@@ -6,11 +6,11 @@ import {
   SetStateAction,
   useState,
 } from 'react';
-import closeIcon from 'assets/modal/close.svg';
-import plant from 'assets/modal/plant.svg';
-import { UserProps } from 'services/interfaces';
-import { updateUser } from '../../redux/slice';
-import { useAppDispatch } from '../../redux/hooks';
+import closeIcon from '@assets/modal/close.svg';
+import plant from '@assets/modal/plant.svg';
+import { UserProps } from '@ts/interfaces';
+import { updateUser } from '@redux/slice';
+import { useAppDispatch } from '@redux/hooks';
 import cl from './ModalEdit.module.scss';
 
 interface ModalEditProps {
@@ -21,9 +21,6 @@ interface ModalEditProps {
 const ModalEdit: FC<ModalEditProps> = ({ modal, setModal, user }) => {
   const dispatch = useAppDispatch();
   const rootClasses = [cl.modal];
-  // if (!modal) {
-  //   return null;
-  // }
 
   if (modal) {
     rootClasses.push(cl.active);

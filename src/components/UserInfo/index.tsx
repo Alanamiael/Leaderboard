@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
-import editButton from 'assets/edit.svg';
-import { place } from 'helpers/helpers';
+import editButton from '@assets/edit.svg';
+import { place } from '@helpers/helpers';
+import { UserProps } from '@ts/interfaces';
 import ModalEdit from '../ModalEdit';
-import { UserProps } from '../../services/interfaces';
 import cl from './UserInfo.module.scss';
 
 interface UserInfoProps {

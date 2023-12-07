@@ -1,5 +1,3 @@
-export const places = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7ht'];
-
 export interface AvatarsProps {
   id?: number;
   src: string;

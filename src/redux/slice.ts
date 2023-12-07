@@ -1,6 +1,7 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { UserProps } from 'services/interfaces';
-import { fetchUsers } from './actions';
+import { PayloadAction, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { UserProps } from '@ts/interfaces';
+
+import axios from 'axios';
 
 export interface UserState {
   name: string;
@@ -13,8 +14,24 @@ const initialState: UserState = {
   leaders: [],
   loading: false,
 };
-// type newLeadersProps =[Symbol.iterator]() | undefined;
 
+export const fetchUsers = createAsyncThunk(
+  'users/fetchUsers',
+  // eslint-disable-next-line consistent-return
+  async (): Promise<UserProps[] | undefined> => {
+    try {
+      const url = `https://655cc4e325b76d9884fdebd4.mockapi.io/LeaderboardData`;
+      const { data } = await axios.get(url);
+      const APIData: UserProps[] = data;
+      const sortedData = APIData.sort((a: UserProps, b: UserProps) => {
+        return b.score - a.score;
+      });
+      return sortedData;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
 const leaderboardSlice = createSlice({
   name: 'users',
   initialState,
@@ -33,7 +50,7 @@ const leaderboardSlice = createSlice({
         const newLeaders = [...state.leaders, action.payload].sort(
           (a, b) => b.score - a.score,
         );
-        console.log(newLeaders, 'sortedLeaders');
+
         state.leaders = newLeaders;
       }
     },

@@ -7,11 +7,11 @@ import {
   useState,
 } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import closeIcon from 'assets/modal/close.svg';
-import plant from 'assets/modal/plant.svg';
-import { avatars } from 'helpers/helpers';
-import { createUser } from '../../redux/slice';
-import { useAppDispatch } from '../../redux/hooks';
+import closeIcon from '@assets/modal/close.svg';
+import plant from '@assets/modal/plant.svg';
+import { avatars } from '@helpers/helpers';
+import { createUser } from '@redux/slice';
+import { useAppDispatch } from '@redux/hooks';
 import cl from './ModalAdd.module.scss';
 
 interface ModalEditProps {
