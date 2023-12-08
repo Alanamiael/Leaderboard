@@ -1,7 +1,6 @@
+import axios from 'axios';
 import { PayloadAction, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { UserProps } from '@ts/interfaces';
-
-import axios from 'axios';
 
 export interface UserState {
   name: string;

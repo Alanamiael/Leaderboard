@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { UserProps } from '@types/interfaces';
+import { UserProps } from '@ts/interfaces';
 
 import cl from './HeaderUser.module.scss';
 
