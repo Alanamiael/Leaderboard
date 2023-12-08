@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '@styles/variables';
+@import '@styles/mixins';
 
 .container {
   @include flex($align: start, $justify: space-between);
@@ -20,7 +20,7 @@
     padding-bottom: 6px;
   }
   .wrapper {
-    @include flex($justify: space-between);
+    @include flex($justify: space-between, $gap: 10px);
   }
   .headerImg {
     position: absolute;

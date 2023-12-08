@@ -1,11 +1,19 @@
-import mockImg from '../../assets/mockImg.svg';
+import { FC } from 'react';
+import { UserProps } from '@ts/interfaces';
+
 import cl from './HeaderUser.module.scss';
 
-const HeaderUser = () => {
+interface HeaderUserProps {
+  user: UserProps | undefined;
+}
+
+const HeaderUser: FC<HeaderUserProps> = ({ user }) => {
   return (
     <div className={cl.container}>
-      <img src={mockImg} alt="" />
-      <p>Rome - 10</p>
+      <img src={user?.avatar} alt="" />
+      <p>
+        {user?.name} - {user?.score}
+      </p>
     </div>
   );
 };

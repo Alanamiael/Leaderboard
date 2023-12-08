@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '@styles/variables';
+@import '@styles/mixins';
 
 .modal {
   @include background-opacity($black, 0.5);
@@ -23,7 +23,7 @@
   min-width: 500px;
   min-height: 300px;
   box-sizing: border-box;
-  background: url('../../assets/modal/backgrng.svg') $light-gray no-repeat;
+  background: url('assets/modal/backgrng.svg') $light-gray no-repeat;
 
   .closeBtn img {
     position: absolute;
@@ -32,14 +32,18 @@
     cursor: pointer;
   }
   .wrapper {
+    position: relative;
+  }
+  .positionBlock {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 65px;
     right: 0;
     left: 0;
     @include flex($direction: column);
   }
-
+  form {
+    position: relative;
+  }
   .plant {
     position: absolute;
     bottom: 0;
@@ -54,8 +58,11 @@
 
   input {
     @include border;
+    position: relative;
     min-width: 230px;
     min-height: 35px;
+    padding: 0 10px;
+    box-sizing: border-box;
     border-color: $border-gray;
 
     &:hover,
@@ -66,34 +73,41 @@
       margin-bottom: 10px;
     }
     &::placeholder {
-      padding: 10px;
       color: $placeholeder;
     }
   }
-
   .scoreInput {
-    position: relative;
-    img {
-      position: absolute;
+    input {
+      background-image: url('../../assets/arrows/arrowsUp|Down.svg');
+      background-position: center right;
+      background-size: contain;
+      background-repeat: no-repeat;
+      caret-color: transparent;
     }
-    .upArrow {
-      top: 10px;
-      right: 10px;
-    }
-    .downArrow {
-      top: 20px;
-      right: 10px;
+    input[type='number']::-webkit-inner-spin-button {
+      -webkit-appearance: none !important;
+      opacity: 1 !important;
+      background: transparent !important;
+      border-width: 0px;
+      margin: 0;
+
+      height: 34px;
+      width: 23px;
+      cursor: pointer;
     }
   }
 
   button {
     @include border;
     position: absolute;
-    left: 215px;
+    left: 80px;
     width: 75px;
     height: 25px;
     background-color: $orange;
     font-size: 10px;
     font-weight: 600;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import TableContent from '../TableContent';
 import TableHeading from '../TableHeading';
+
 import cl from './Table.module.scss';
 
 const Table = () => {

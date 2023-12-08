@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '@styles/variables';
+@import '@styles/mixins';
 
 .container {
   @include flex($justify: space-between);
@@ -11,14 +11,17 @@
     @include flex($justify: space-between, $gap: 30px);
 
     .place {
-      color: $gray;
+      text-align: center;
+      width: 35px;
       font-size: 18px;
+      color: $gray;
     }
     img {
       width: 44px;
       height: 44px;
     }
     .score {
+      width: 20px;
       font-size: 18px;
       font-weight: 600;
     }
@@ -32,6 +35,9 @@
       font-size: 12px;
       color: $orange;
       font-weight: 500;
+    }
+    .editButton:hover {
+      cursor: pointer;
     }
   }
 }

@@ -1,0 +1,113 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+
+.modal {
+  @include background-opacity($black, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+
+  &.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.modalContent {
+  @include border;
+  position: relative;
+  min-width: 500px;
+  min-height: 300px;
+  box-sizing: border-box;
+  background: url('../../assets/modal/backgrng.svg') $light-gray no-repeat;
+
+  .closeBtn img {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+  .wrapper {
+    position: relative;
+  }
+  .positionBlock {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    left: 0;
+    @include flex($direction: column);
+  }
+  form {
+    position: relative;
+  }
+  .plant {
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+  }
+  h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  input {
+    @include border;
+    position: relative;
+    min-width: 230px;
+    min-height: 35px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border-color: $border-gray;
+
+    &:hover,
+    &:focus {
+      border-color: $orange;
+    }
+    &:first-child {
+      margin-bottom: 10px;
+    }
+    &::placeholder {
+      color: $placeholeder;
+    }
+  }
+  .scoreInput {
+    input {
+      background-image: url('../../assets/arrows/arrowsUp|Down.svg');
+      background-position: center right;
+      background-size: contain;
+      background-repeat: no-repeat;
+      caret-color: transparent;
+    }
+    input[type='number']::-webkit-inner-spin-button {
+      -webkit-appearance: none !important;
+      opacity: 1 !important;
+      background: transparent !important;
+      border-width: 0px;
+      margin: 0;
+
+      height: 34px;
+      width: 23px;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    @include border;
+    position: absolute;
+    left: 80px;
+    width: 75px;
+    height: 25px;
+    background-color: $orange;
+    font-size: 10px;
+    font-weight: 600;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
