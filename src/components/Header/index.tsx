@@ -1,11 +1,14 @@
+import { FC } from 'react';
 import headerImg from '@assets/heading.svg';
 import HeaderUser from '@components/HeaderUser';
 import { useAppSelector } from '@redux/hooks';
 import { UserProps } from '@ts/interfaces';
 import cl from './Header.module.scss';
 
-const Header = () => {
-  const users = useAppSelector((store) => store.leaderboard.leaders);
+const Header: FC = () => {
+  const users = useAppSelector(
+    (store) => store.leaderboard.history[store.leaderboard.currentDay],
+  );
   return (
     <div className={cl.container}>
       <div className={cl.headerContent}>

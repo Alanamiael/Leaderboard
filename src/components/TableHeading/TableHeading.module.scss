@@ -15,6 +15,9 @@
   img {
     padding-bottom: 3px;
   }
+  .arrowBtn:hover {
+    cursor: pointer;
+  }
   button {
     @include border;
     padding: 6px 24px;
@@ -29,4 +32,9 @@
   .new {
     background-color: $blue;
   }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }

@@ -1,10 +1,13 @@
+import { FC } from 'react';
 import { UserProps } from '@ts/interfaces';
 import { useAppSelector } from '@redux/hooks';
 import UserInfo from '../UserInfo';
 
-const TableContent = () => {
-  const users = useAppSelector((store) => store.leaderboard.leaders);
-  console.log('users', users);
+const TableContent: FC = () => {
+  const users = useAppSelector(
+    (store) => store.leaderboard.history[store.leaderboard.currentDay],
+  );
+
   return (
     <div>
       {users

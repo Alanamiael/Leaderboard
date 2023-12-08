@@ -14,11 +14,11 @@ import { createUser } from '@redux/slice';
 import { useAppDispatch } from '@redux/hooks';
 import cl from './ModalAdd.module.scss';
 
-interface ModalEditProps {
+interface ModalAddProps {
   modal: boolean;
   setModal: Dispatch<SetStateAction<boolean>>;
 }
-const ModalEdit: FC<ModalEditProps> = ({ modal, setModal }) => {
+const ModalAdd: FC<ModalAddProps> = ({ modal, setModal }) => {
   const rootClasses = [cl.modal];
   const dispatch = useAppDispatch();
 
@@ -102,4 +102,4 @@ const ModalEdit: FC<ModalEditProps> = ({ modal, setModal }) => {
   );
 };
 
-export default ModalEdit;
+export default ModalAdd;
