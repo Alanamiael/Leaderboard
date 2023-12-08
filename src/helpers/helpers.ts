@@ -1,8 +1,5 @@
-export interface AvatarsProps {
-  id?: number;
-  src: string;
-  name: string;
-}
+import { AvatarsProps } from '@ts/interfaces';
+
 export const avatars: AvatarsProps[] = [
   {
     src: 'https://i.pinimg.com/736x/7e/5c/c0/7e5cc007e3eeff9628a704003fc91620.jpg',

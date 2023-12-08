@@ -2,7 +2,9 @@ import { FC, useState } from 'react';
 import editButton from '@assets/edit.svg';
 import { place } from '@helpers/helpers';
 import { UserProps } from '@ts/interfaces';
+import { useAppSelector } from '@redux/hooks';
 import ModalEdit from '../ModalEdit';
+import { orderChanges, orderColor } from './helpers';
 import cl from './UserInfo.module.scss';
 
 interface UserInfoProps {
@@ -15,6 +17,11 @@ const UserInfo: FC<UserInfoProps> = ({ user, index }) => {
   const actionModalFunction = () => {
     setModal((prev) => !prev);
   };
+  const prevUsers = useAppSelector(
+    (store) => store.leaderboard.history[store.leaderboard.currentDay - 1],
+  )?.map((item) => item.id);
+
+  const { diff, textColor } = orderChanges(prevUsers, user, index);
 
   return (
     <>
@@ -26,7 +33,8 @@ const UserInfo: FC<UserInfoProps> = ({ user, index }) => {
           <p className={cl.name}>{user?.name}</p>
         </div>
         <div className={cl.position}>
-          <p className={cl.change}>No change</p>
+          <p className={orderColor(textColor)}>{diff}</p>
+
           <div
             role="presentation"
             onClick={actionModalFunction}
